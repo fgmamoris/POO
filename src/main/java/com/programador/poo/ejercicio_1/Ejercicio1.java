@@ -17,14 +17,32 @@ public class Ejercicio1 {
         Perro perro = new Perro();
 
         System.out.println("Datos del perro");
-        System.out.println("Ingrese nombre:");
-        perro.setNombre(sc.nextLine());
-        System.out.println("Ingrese raza:");
-        perro.setRaza(sc.nextLine());
-        System.out.println("Ingrese color:");
-        perro.setColor(sc.nextLine());
+        do {
+            System.out.println("Ingrese nombre:");
+            perro.setNombre(sc.nextLine());
+            if (perro.getNombre().isEmpty()) {
+                System.out.println("Debe ingresar al menos una palabra");
+            }
+        } while (perro.getNombre().isEmpty());
 
+        do {
+            System.out.println("Ingrese raza:");
+            perro.setRaza(sc.nextLine());
+            if (perro.getRaza().isEmpty()) {
+                System.out.println("Debe ingresar al menos una palabra");
+            }
+        } while (perro.getRaza().isEmpty());
+
+        do {
+            System.out.println("Ingrese color:");
+            perro.setColor(sc.nextLine());
+            if (perro.getColor().isEmpty()) {
+                System.out.println("Debe ingresar al menos una palabra");
+            }
+        } while (perro.getColor().isEmpty());
+        System.out.println("----Resultado-----");
         System.out.println(perro.toString());
         perro.ladrar();
+        System.out.println("-------------------");
     }
 }

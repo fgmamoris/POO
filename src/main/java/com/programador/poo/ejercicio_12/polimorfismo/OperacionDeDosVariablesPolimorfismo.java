@@ -1,20 +1,21 @@
 /*
  */
-package com.programador.poo.ejercicio_12;
+package com.programador.poo.ejercicio_12.polimorfismo;
+
+import com.programador.poo.ejercicio_12.*;
 
 /**
  *
  * @author Federico Mamoris
  */
-public class OperacionDeDosVariables {
+public abstract class OperacionDeDosVariablesPolimorfismo {
 
-    protected int variableUno;
-    protected int variableDos;
+    private int variableUno;
+    private int variableDos;
 
-    public OperacionDeDosVariables(int variableUno, int variableDos) {
+    public OperacionDeDosVariablesPolimorfismo(int variableUno, int variableDos) {
         this.variableUno = variableUno;
         this.variableDos = variableDos;
-
     }
 
     public int getVariableUno() {
@@ -32,6 +33,8 @@ public class OperacionDeDosVariables {
     public void setVariableDos(int variableDos) {
         this.variableDos = variableDos;
     }
+
+    public abstract int operacion();
 
     @Override
     public String toString() {

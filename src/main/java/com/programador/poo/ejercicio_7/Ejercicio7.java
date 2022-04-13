@@ -10,8 +10,8 @@
  */
 package com.programador.poo.ejercicio_7;
 
-import com.programador.poo.methods.TipoCuenta;
-import com.programador.poo.methods.ValidateNumbers;
+import com.programador.poo.ejercicio_3.TipoCuenta;
+import com.programador.poo.utils.ValidateNumbers;
 import java.util.Scanner;
 
 /**
@@ -25,7 +25,7 @@ public class Ejercicio7 {
         Lavarropa unidad = new Lavarropa("Deean", "Family max", 14);
         Scanner sc = new Scanner(System.in);
         String temp = "";
-        boolean isNumeric = true;
+        boolean isNumeric = false;
         System.out.println(unidad.toString());
         do {
             System.out.println("Seleccione programa de lavado:");
@@ -34,18 +34,24 @@ public class Ejercicio7 {
             System.out.println("3 - Económico");
             System.out.println("4 - Ropa de bebe");
             temp = sc.nextLine();
-            isNumeric = ValidateNumbers.validateNumbersInString(temp);
-            if (!isNumeric) {
-                System.out.println("Error, debe ingresar un número válido");
-            } else if (Integer.parseInt(temp) < 1 && Integer.parseInt(temp) > 4) {
-                System.out.println("Debe ingresar una opción válida");
+            if (temp.isEmpty()) {
+                System.out.println("Error, debe ingresar al menos un número");
             } else {
-
-                TipoDeRopa[] arr = TipoDeRopa.values();
-                Programa.llenado(arr[Integer.parseInt(temp)]);
-                
+                isNumeric = ValidateNumbers.validateNumbersInString(temp);
+                if (!isNumeric) {
+                    System.out.println("Error, debe ingresar un número válido");
+                } else {
+                    if (Integer.parseInt(temp) < 1 || Integer.parseInt(temp) > 4) {
+                        System.out.println("Debe ingresar una opción válida");
+                        isNumeric = false;
+                    } else {
+                        TipoDeRopa[] arr = TipoDeRopa.values();
+                        System.out.println(unidad.toString());
+                        System.out.println("Programa seleccionado: " + arr[Integer.parseInt(temp) - 1].getTipo());
+                        Programa.llenado(arr[Integer.parseInt(temp) - 1]);
+                    }
+                }
             }
         } while (!isNumeric);
     }
-
 }

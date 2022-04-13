@@ -4,8 +4,6 @@
  */
 package com.programador.poo.ejercicio_3;
 
-import com.programador.poo.methods.TipoCuenta;
-
 /**
  *
  * @author Federico Mamoris

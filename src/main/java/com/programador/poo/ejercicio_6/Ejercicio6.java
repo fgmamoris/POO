@@ -6,7 +6,7 @@
  */
 package com.programador.poo.ejercicio_6;
 
-import com.programador.poo.methods.ValidateNumbers;
+import com.programador.poo.utils.ValidateNumbers;
 import java.util.Scanner;
 
 /**
@@ -26,25 +26,43 @@ public class Ejercicio6 {
         do {
             System.out.println("Ingrese la base del rectangulo:");
             temp = sc.nextLine();
-            isNumeric = ValidateNumbers.validateNumbersInString(temp);
-            if (!isNumeric) {
+            if (temp.isEmpty()) {
                 System.out.println("Error, debe ingresar un número válido");
             } else {
-                base = Integer.parseInt(temp);
+                isNumeric = ValidateNumbers.validateNumbersInString(temp);
+                if (!isNumeric) {
+                    System.out.println("Error, debe ingresar un número válido");
+                } else {
+                    if (Integer.parseInt(temp) < 0) {
+                        System.out.println("Error, el valor no puede ser menor a cero");
+                        isNumeric = false;
+                    } else {
+                        base = Integer.parseInt(temp);
+                    }
+                }
             }
-        } while (!isNumeric);
+        } while (!isNumeric || temp.isEmpty());
 
         do {
             System.out.println("Ingrese la altura del rectangulo:");
             temp = sc.nextLine();
             isNumeric = ValidateNumbers.validateNumbersInString(temp);
-            if (!isNumeric) {
+            if (temp.isEmpty()) {
                 System.out.println("Error, debe ingresar un número válido");
             } else {
-                altura = Integer.parseInt(temp);
-            }
-        } while (!isNumeric);
+                if (!isNumeric) {
+                    System.out.println("Error, debe ingresar un número válido");
+                } else {
+                    if (Integer.parseInt(temp) < 0) {
+                        System.out.println("Error, el valor no puede ser menor a cero");
+                        isNumeric = false;
+                    } else {
 
+                        altura = Integer.parseInt(temp);
+                    }
+                }
+            }
+        } while (!isNumeric || temp.isEmpty());
         Rectangulo figura = new Rectangulo(base, altura);
         System.out.println("Área total de rectangulo: " + calcularArea(figura));
     }

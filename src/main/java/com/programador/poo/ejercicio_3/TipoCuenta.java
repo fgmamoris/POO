@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.programador.poo.methods;
+package com.programador.poo.ejercicio_3;
 
 /**
  *
@@ -17,7 +17,7 @@ public enum TipoCuenta {
         this.tipo = tipo;
     }
 
-    public String getTipo() {
+    public String getTipoDeCeunta() {
         return tipo;
     }
 }

@@ -1,10 +1,8 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.programador.poo.ejercicio_2;
 
-import com.programador.poo.methods.ValidateNumbers;
+import com.programador.poo.utils.ValidateNumbers;
 import java.util.Scanner;
 
 /**
@@ -19,26 +17,41 @@ public class Ejercicio2 {
         String temp = "";
         boolean isNumeric = true;
         System.out.println("Datos del vehículo");
-
-        System.out.println("Ingrese marca:");
-        auto.setMarca(sc.nextLine());
-        System.out.println("Ingrese modelo:");
-        auto.setModelo(sc.nextLine());
+        do {
+            System.out.println("Ingrese marca:");
+            auto.setMarca(sc.nextLine());
+            if (auto.getMarca().isEmpty()) {
+                System.out.println("Debe ingresar al menos una palabra");
+            }
+        } while (auto.getMarca().isEmpty());
+        do {
+            System.out.println("Ingrese modelo:");
+            auto.setModelo(sc.nextLine());
+            if (auto.getModelo().isEmpty()) {
+                System.out.println("Debe ingresar al menos una palabra");
+            }
+        } while (auto.getModelo().isEmpty());
 
         do {
             System.out.println("Ingrese kilometraje:");
             temp = sc.nextLine();
-            isNumeric = ValidateNumbers.validateNumbersInString(temp);
-            if (!isNumeric) {
-                System.out.println("Error, debe ingresar un número válido");
+            if (temp.isEmpty()) {
+                System.out.println("Debe ingresar un número valido");
             } else {
-                auto.setKilometraje(Integer.parseInt(temp));
+                isNumeric = ValidateNumbers.validateNumbersInString(temp);
+                if (!isNumeric) {
+                    System.out.println("Error, debe ingresar un número válido");
+                } else {
+                    auto.setKilometraje(Integer.parseInt(temp));
+                }
             }
-        } while (!isNumeric);
-
+        } while (!isNumeric || temp.isEmpty());
+        System.out.println("----Resultado-----");
+        estadoAuto(auto.getKilometraje());
+        System.out.println("-------------------");
     }
 
-    public static void estadoAuto(int kilometraje) {
+    private static void estadoAuto(int kilometraje) {
 
         if (kilometraje == 0) {
             System.out.println("El auto está nuevo");

@@ -10,8 +10,7 @@ public class Resta extends OperacionDeDosVariables {
         super(variableUno, variableDos);
     }
 
-    @Override
-    public int operacion(int variableUno, int variableDos) {
+    public int operacion() {
         return (variableUno - variableDos);
     }
 }

@@ -13,7 +13,7 @@ public class Suma extends OperacionDeDosVariables {
         super(variableUno, variableDos);
     }
 
-    public int operacion(int variableUno, int variableDos) {
+    public int operacion() {
         return (variableUno + variableDos);
     }
 
