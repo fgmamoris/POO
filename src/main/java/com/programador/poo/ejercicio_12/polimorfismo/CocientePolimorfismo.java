@@ -6,14 +6,14 @@ import com.programador.poo.ejercicio_12.*;
  *
  * @author Federico Mamoris
  */
-public class RestaPolimorfismo extends OperacionDeDosVariablesPolimorfismo {
+public class CocientePolimorfismo extends OperacionDeDosVariablesPolimorfismo {
 
-    public RestaPolimorfismo(int variableUno, int variableDos) {
+    public CocientePolimorfismo(int variableUno, int variableDos) {
         super(variableUno, variableDos);
     }
 
     @Override
     public int operacion() {
-        return getVariableUno() - getVariableDos();
+        return getVariableUno() / getVariableDos();
     }
 }

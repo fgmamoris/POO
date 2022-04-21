@@ -1,152 +1,114 @@
 /*
- * Realizar un programa en  el cual exista una clase padre y 3 clases hijas. 
- * Vamos a simular que somos una compañía de soporte técnico en donde recibimos 
- * elementos electrónicos como celulares, tablet y joystick. 
- * El operador tiene que poder realizar la registración del elemento
- * electrónico que ingreso , teniendo un ingreso de sus atributos por consola.
- * Atributos como :
- * Numero de cliente:
- * Elemento:(celular,tablet,jostick..)
- * Marca:
- * Modelo:
- * Batería: 3000ma  5hs,4000ma  9hs,7000ma  12hs
- * Defecto:
- * Para luego realizar una impresión en pantalla con el detalle del elemento recibido.
- * Adjunte el comentario con el repositorio para ver el funcionamiento.
+ * Ejercicio N°14
+ •
+ * Crea una clase llamada Libro que guarde la información de cada uno de los 
+ * libros de una biblioteca. La clase debe guardar el título del libro, 
+ * autor, número de ejemplares del libro y número de ejemplares prestados.
+ * La clase contendrá los siguientes métodos:
+ * Constructor por defecto.
+ * Constructor con parámetros.
+ * Métodos Setters/getters
+ * Método préstamo que incremente el atributo correspondiente cada vez que se 
+ * realice un préstamo del libro. No se podrán prestar libros de los que no 
+ * queden ejemplares disponibles para prestar. Devuelve true si se ha podido 
+ * realizar la operación y false en caso contrario.
+ * Método devolución que decremente el atributo correspondiente cuando se
+ * produzca la devolución de un libro. No se podrán devolver libros que no 
+ * se hayan prestado. Devuelve true si se ha podido realizar la operación y 
+ * false en caso contrario.
+ * Método toString para mostrar los datos de los libros.
+ * Este método se heredada de Object y lo debemos modificar 
+ * (override) para adaptarlo a la clase Libro.
+ * Escribe un programa para probar el funcionamiento de la clase Libronto.
  */
-package com.programador.poo.ejercicio_13;
+package com.programador.poo.ejercicio_14;
 
-import com.programador.poo.ejercicio_13.dispositivo.Celular;
-import com.programador.poo.ejercicio_13.dispositivo.Elemento;
-import com.programador.poo.ejercicio_13.dispositivo.Joystick;
-import com.programador.poo.ejercicio_13.dispositivo.Tablet;
-import com.programador.poo.utils.ValidateNumbers;
 import java.util.Scanner;
 
 /**
  *
  * @author Federico Mamoris
  */
-public class Ejercicio13 {
+public class Ejercicio14 {
 
-    public static void inicializarEjercicio13() {
+    public static void inicializarEjercicio14() {
 
         Scanner sc = new Scanner(System.in);
-        //Variables 
-        String temp = "";
-        int numeroCliente = 0;
-        String marca = "";
-        String modelo = "";
-        int amperaje = 0;
-        int duracion = 0;
-        int tipoElemento = 0;
-        String defecto = "";
+        String titulo, autor;
+        int ejemplares;
 
-        boolean isNumeric = false;
-        System.out.println("Datos del dispositivo electrónico");
+        //se crea el objeto libro1 utilizando el constructor con parámetros
+        Libro libro1 = new Libro("El quijote", "Cervantes", 1, 0);
+        //se crea el objeto libro2 utilizando el constructor por defecto
+        Libro libro2 = new Libro();
 
-        do {
-            System.out.println("Ingresar número de cliente: ");
-            temp = sc.next();
-            isNumeric = ValidateNumbers.validateNumbersInString(temp);
-            if (!isNumeric) {
-                System.out.println("Error, debe ingresar un número válido");
-            } else {
-                numeroCliente = Integer.parseInt(temp);
-            }
-        } while (!isNumeric);
-        do {
-            System.out.println("Seleccione el elemento electronico: ");
-            System.out.println("1 - Celular");
-            System.out.println("2 - Tablet");
-            System.out.println("3 - Joystick");
-            temp = sc.next();
-            isNumeric = ValidateNumbers.validateNumbersInString(temp);
-            if (!isNumeric) {
-                System.out.println("Error, debe ingresar un número válido");
-            } else if (Integer.parseInt(temp) < 1 || Integer.parseInt(temp) > 3) {
-                System.out.println("Debe seleccionar un elemento de la lista");
-                isNumeric = false;
-            } else {
-                tipoElemento = Integer.parseInt(temp);
-            }
-        } while (!isNumeric);
-        do {
-            System.out.println("Ingrese marca: ");
-            marca = sc.nextLine();
-            if (marca.isEmpty()) {
-                System.out.println("Debe ingresar al menos una palabra");
-            }
-        } while (marca.isEmpty());
-        do {
-            System.out.println("Ingrese modelo: ");
-            modelo = sc.nextLine();
-            if (modelo.isEmpty()) {
-                System.out.println("Debe ingresar al menos una palabra");
-            }
-        } while (modelo.isEmpty());
+        System.out.print("Introduce titulo: ");
+        titulo = sc.nextLine();
+        System.out.print("Introduce autor: ");
+        autor = sc.nextLine();
+        System.out.print("Numero de ejemplares: ");
+        ejemplares = sc.nextInt();
 
-        do {
-            System.out.println("Ingrese el amperaje de la bateria en mA: ");
-            temp = sc.nextLine();
-            if (temp.isEmpty()) {
-                System.out.println("Error, debe ingresar un número válido");
-            } else {
-                isNumeric = ValidateNumbers.validateNumbersInString(temp);
-                if (!isNumeric) {
-                    System.out.println("Error, debe ingresar un número válido");
-                } else {
-                    if (Integer.parseInt(temp) < 0) {
-                        System.out.println("El ampaeraje no puede ser negativo");
-                        isNumeric = false;
-                    } else {
-                        amperaje = Integer.parseInt(temp);
-                    }
-                }
-            }
-        } while (!isNumeric || temp.isEmpty());
-        do {
-            System.out.println("Ingrese la duración de la bateria en horas: ");
-            temp = sc.nextLine();
-            if (temp.isEmpty()) {
-                System.out.println("Error, debe ingresar un número válido");
-            } else {
-                isNumeric = ValidateNumbers.validateNumbersInString(temp);
-                if (!isNumeric) {
-                    System.out.println("Error, debe ingresar un número válido");
-                } else {
-                    if (Integer.parseInt(temp) < 0) {
-                        System.out.println("La duración no puede ser negativa");
-                        isNumeric = false;
-                    } else {
-                        duracion = Integer.parseInt(temp);
-                    }
-                }
-            }
-        } while (!isNumeric || temp.isEmpty());
-        do {
-            System.out.println("Ingrese defecto del dispositivo");
-            defecto = sc.nextLine();
-            if (defecto.isEmpty()) {
-                System.out.println("Debe ingresar al menos una palabra");
-            }
-        } while (defecto.isEmpty());
+        //se asigna a libro2 los datos pedidos por teclado.
+        //para ello se utilizan los métodos setters
+        libro2.setTitulo(titulo);
+        libro2.setAutor(autor);
+        libro2.setEjemplares(ejemplares);
 
-        Elemento dispositivoIngresado = new Elemento();
-        switch (tipoElemento) {
-            case 1:
-                dispositivoIngresado = new Celular(numeroCliente, marca, modelo, defecto, amperaje, duracion);
-                break;
-            case 2:
-                dispositivoIngresado = new Tablet(numeroCliente, marca, modelo, defecto, amperaje, duracion);
-                break;
-            case 3:
-                dispositivoIngresado = new Joystick(numeroCliente, marca, modelo, defecto, amperaje, duracion);
-                break;
+        //se muestran por pantalla los datos del objeto libro1
+        //se utilizan los métodos getters para acceder al valor de los atributos
+        System.out.println("Libro 1:");
+        System.out.println("Titulo: " + libro1.getTitulo());
+        System.out.println("Autor: " + libro1.getAutor());
+        System.out.println("Ejemplares: " + libro1.getEjemplares());
+        System.out.println("Prestados: " + libro1.getPrestados());
+        System.out.println();
 
+        //se realiza un préstamo de libro1. El método devuelve true si se ha podido
+        //realizar el préstamo y false en caso contrario
+        if (libro1.prestamo()) {
+            System.out.println("Se ha prestado el libro " + libro1.getTitulo());
+        } else {
+            System.out.println("No quedan ejemplares del libro " + libro1.getTitulo() + " para prestar");
         }
-        System.out.println("---Dispositivo ingresado al servicio técnico---");
-        System.out.println(dispositivoIngresado.toString());
-        System.out.println("");
+
+        //se realiza una devolución de libro1. El método devuelve true si se ha podido
+        //realizar la devolución y false en caso contrario
+        if (libro1.devolucion()) {
+            System.out.println("Se ha devuelto el libro " + libro1.getTitulo());
+        } else {
+            System.out.println("No hay ejemplares del libro " + libro1.getTitulo() + " prestados");
+        }
+
+        //se realiza otro préstamo de libro1
+        if (libro1.prestamo()) {
+            System.out.println("Se ha prestado el libro " + libro1.getTitulo());
+        } else {
+            System.out.println("No quedan ejemplares del libro " + libro1.getTitulo() + " para prestar");
+        }
+
+        //se realiza otro préstamo de libro1. En este caso no se podrá realizar ya que
+        //solo hay un ejemplar de este libro y ya está prestado. Se mostrará por
+        //pantalla el mensaje No quedan ejemplares del libro…
+        if (libro1.prestamo()) {
+            System.out.println("Se ha prestado el libro " + libro1.getTitulo());
+        } else {
+            System.out.println("No quedan ejemplares del libro " + libro1.getTitulo() + " para prestar");
+        }
+        //mostrar los datos del objeto libro1
+        System.out.println("Libro 1:");
+        System.out.println("Titulo: " + libro1.getTitulo());
+        System.out.println("Autor: " + libro1.getAutor());
+        System.out.println("Ejemplares: " + libro1.getEjemplares());
+        System.out.println("Prestados: " + libro1.getPrestados());
+        System.out.println();
+
+        //mostrar los datos del objeto libro2
+        System.out.println("Libro 2:");
+        System.out.println("Titulo: " + libro2.getTitulo());
+        System.out.println("Autor: " + libro2.getAutor());
+        System.out.println("Ejemplares: " + libro2.getEjemplares());
+        System.out.println("Prestados: " + libro2.getPrestados());
+        System.out.println();
     }
 }

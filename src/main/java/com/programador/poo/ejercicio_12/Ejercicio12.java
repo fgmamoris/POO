@@ -6,6 +6,8 @@
  */
 package com.programador.poo.ejercicio_12;
 
+import com.programador.poo.ejercicio_12.polimorfismo.CocientePolimorfismo;
+import com.programador.poo.ejercicio_12.polimorfismo.ProductoPolimorfismo;
 import com.programador.poo.ejercicio_12.polimorfismo.RestaPolimorfismo;
 import com.programador.poo.ejercicio_12.polimorfismo.SumaPolimorfismo;
 import com.programador.poo.utils.ValidateNumbers;
@@ -74,8 +76,22 @@ public class Ejercicio12 {
                 System.out.println("Resultado suma: " + sumaPolimorfismo.operacion());
                 RestaPolimorfismo resta = new RestaPolimorfismo(valorTempUno, valorTempDos);
                 System.out.println("Resultado resta: " + resta.operacion());
+                ProductoPolimorfismo multiplicacion;
+                if (valorTempUno < 0) {
+                    valorTempUno *= -1;
+                }
+                if (valorTempDos == 0) {
+                    System.out.println("No se puede dividir por cero ");
+                    multiplicacion = new ProductoPolimorfismo(valorTempUno, valorTempDos);
+                    System.out.println("Resultado del producto: " + multiplicacion.operacion());
+                } else if (valorTempDos < 0) {
+                    valorTempDos *= -1;
+                    CocientePolimorfismo division = new CocientePolimorfismo(valorTempUno, valorTempDos);
+                    System.out.println("Resultado del cociente: " + division.operacion());
+                    multiplicacion = new ProductoPolimorfismo(valorTempUno, valorTempDos);
+                    System.out.println("Resultado del producto: " + multiplicacion.operacion());
+                }
                 break;
-
         }
     }
 }
