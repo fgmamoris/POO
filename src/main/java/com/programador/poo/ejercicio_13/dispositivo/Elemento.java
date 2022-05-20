@@ -13,6 +13,7 @@ public class Elemento {
     private String modelo;
     private Bateria bateria;
     private String defecto;
+    private boolean tienePuertoUSB;
 
     public Elemento() {
     }
@@ -23,6 +24,9 @@ public class Elemento {
         this.modelo = modelo;
         this.defecto = defecto;
         this.bateria = new Bateria(amperaje, duracionEnHoras);
+    }
+    public void mostarTipoElemento(){
+        System.out.println("Mostar");
     }
 
     public int getNumeroCliente() {

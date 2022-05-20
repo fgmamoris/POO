@@ -3,11 +3,18 @@
  */
 package com.programador.poo;
 
+import com.programador.poo.ejercicio_25.Ejercicio25;
+import com.programador.poo.ejercicio_20.Ejercicio20;
+import com.programador.poo.ejercicio_21.Ejercicio21;
 import com.programador.poo.ejercicio_1.Ejercicio1;
 import com.programador.poo.ejercicio_12.Ejercicio12;
 import com.programador.poo.ejercicio_13.Ejercicio13;
 import com.programador.poo.ejercicio_17.Ejercicio17;
 import com.programador.poo.ejercicio_2.Ejercicio2;
+import com.programador.poo.ejercicio_23.Ejercicio23;
+import com.programador.poo.ejercicio_26.Ejercicio26;
+import com.programador.poo.ejercicio_28.Ejercicio28A;
+import com.programador.poo.ejercicio_29.Ejercicio29;
 import com.programador.poo.ejercicio_3.Ejercicio3;
 import com.programador.poo.ejercicio_6.Ejercicio6;
 import com.programador.poo.ejercicio_7.Ejercicio7;
@@ -34,6 +41,15 @@ public class Main {
             System.out.println("6 - Ejercicio 12");
             System.out.println("7 - Ejercicio 13");
             System.out.println("8 - Ejercicio 17 - 18 - 19");
+            System.out.println("9 - Ejercicio 20");
+            System.out.println("10 - Ejercicio 21 - 22");
+            System.out.println("11 - Ejercicio 23 - 24");
+            System.out.println("12 - Ejercicio 25");
+            System.out.println("13 - Ejercicio 26- 27");
+            System.out.println("14 - Ejercicio 28");
+            System.out.println("15 - Ejercicio 29");
+            System.out.println("16 - Ejercicio 23");
+
             System.out.println("0 - Para salir");
             String opcion = sc.nextLine();
             if (!opcion.isEmpty() && ValidateNumbers.validateNumbersInString(opcion)) {
@@ -69,6 +85,27 @@ public class Main {
                         break;
                     case 8:
                         Ejercicio17.inicializarEjercicio17();
+                        break;
+                    case 9:
+                        Ejercicio20.inicializarEjercicio20();
+                        break;
+                    case 10:
+                        Ejercicio21.inicializarEjercicio21();
+                        break;
+                    case 11:
+                        Ejercicio23.inicializarEjercicio23();
+                        break;
+                    case 12:
+                        Ejercicio25.inicializarEjercicio25();
+                        break;
+                    case 13:
+                        Ejercicio26.inicializarEjercicio26();
+                        break;
+                    case 14:
+                        Ejercicio28A.inicializarEjercicio28();
+                        break;
+                    case 15:
+                        Ejercicio29.inicializarEjercicio29();
                         break;
 
                     default:

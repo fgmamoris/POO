@@ -12,8 +12,6 @@
  */
 package com.programador.poo.ejercicio_17;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Federico Mamoris
